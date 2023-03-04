@@ -3,7 +3,7 @@ use Controllers\EtudiantController;
 require_once '../ProjetDITI/controller/EtudiantController.php';
 require_once 'autoload.php';
 require_once '../ProjetDITI/model/DB.class.php';
-
+include 'DB.php';
 
 $controller = new EtudiantController($conn);
 

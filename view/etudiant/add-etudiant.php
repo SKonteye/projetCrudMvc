@@ -1,5 +1,6 @@
 <?php 
 require_once __DIR__ . '/../../autoload.php';
+include_once 'DB.php';
 use Controllers\EtudiantController;
 use Model\EtudiantDAOImpl;
 use Entities\Etudiant;
@@ -27,10 +28,10 @@ if(isset($_REQUEST['submit']) and $_REQUEST['submit']!=""){
 		$result = $this->dao->create($etudiant);
 		echo "Operation succesful";
 		if($result){
-			header('location:browse-users.php?msg=ras');
+			header('location:browse-etudiant.php?msg=ras');
 			exit;
 		}else{
-			header('location:browse-users.php?msg=rna');
+			header('location:browse-etudiant.php?msg=rna');
 			exit;
 		}
 	}
@@ -219,7 +220,7 @@ if(isset($_REQUEST['submit']) and $_REQUEST['submit']!=""){
 
 		<div class="card">
 
-			<div class="card-header"><i class="fa fa-fw fa-plus-circle"></i> <strong>Add Etudiant</strong> <a href="browse-users.php" class="float-right btn btn-dark btn-sm"><i class="fa fa-fw fa-globe"></i> Browse Etudiants</a></div>
+			<div class="card-header"><i class="fa fa-fw fa-plus-circle"></i> <strong>Add Etudiant</strong> <a href="browse-etudiant.php" class="float-right btn btn-dark btn-sm"><i class="fa fa-fw fa-globe"></i> Browse Etudiants</a></div>
 
 			<div class="card-body">
 

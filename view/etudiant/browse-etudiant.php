@@ -1,5 +1,4 @@
 <?php 
-include_once('../ProjetDITI/model/');
 
 ?>
 
@@ -53,14 +52,14 @@ include_once('../ProjetDITI/model/');
 	
 	<?php
 	$condition	=	'';
-	if(isset($_REQUEST['username']) and $_REQUEST['username']!=""){
-		$condition	.=	' AND username LIKE "%'.$_REQUEST['username'].'%" ';
+	if(isset($_REQUEST['nom']) and $_REQUEST['nom']!=""){
+		$condition	.=	' AND nom LIKE "%'.$_REQUEST['nom'].'%" ';
 	}
-	if(isset($_REQUEST['useremail']) and $_REQUEST['useremail']!=""){
-		$condition	.=	' AND useremail LIKE "%'.$_REQUEST['useremail'].'%" ';
+	if(isset($_REQUEST['prenom']) and $_REQUEST['prenom']!=""){
+		$condition	.=	' AND prenom LIKE "%'.$_REQUEST['prenom'].'%" ';
 	}
-	if(isset($_REQUEST['userphone']) and $_REQUEST['userphone']!=""){
-		$condition	.=	' AND userphone LIKE "%'.$_REQUEST['userphone'].'%" ';
+	if(isset($_REQUEST['classe']) and $_REQUEST['classe']!=""){
+		$condition	.=	' AND classe LIKE "%'.$_REQUEST['classe'].'%" ';
 	}
 	if(isset($_REQUEST['df']) and $_REQUEST['df']!=""){
 
@@ -73,12 +72,12 @@ include_once('../ProjetDITI/model/');
 
 	}
 	
-	$userData	=	$db->getAllRecords('users','*',$condition,'ORDER BY id DESC');
+
 	?>
    	<div class="container">
-		<h1><a href="https://learncodeweb.com/php/php-crud-in-bootstrap-4-with-search-functionality/">PHP CRUD in Bootstrap with search and pagination</a></h1>
+		<h1><a href="/">PHP CRUD in Bootstrap with search and pagination</a></h1>
 		<div class="card">
-			<div class="card-header"><i class="fa fa-fw fa-globe"></i> <strong>Browse User</strong> <a href="add-users.php" class="float-right btn btn-dark btn-sm"><i class="fa fa-fw fa-plus-circle"></i> Add Users</a></div>
+			<div class="card-header"><i class="fa fa-fw fa-globe"></i> <strong>Browse User</strong> <a href="add-etudiant.php" class="float-right btn btn-dark btn-sm"><i class="fa fa-fw fa-plus-circle"></i> Add Users</a></div>
 			<div class="card-body">
 				<?php
 				if(isset($_REQUEST['msg']) and $_REQUEST['msg']=="rds"){
@@ -92,25 +91,25 @@ include_once('../ProjetDITI/model/');
 				}
 				?>
 				<div class="col-sm-12">
-					<h5 class="card-title"><i class="fa fa-fw fa-search"></i> Find User</h5>
+					<h5 class="card-title"><i class="fa fa-fw fa-search"></i> Find Etudiant</h5>
 					<form method="get">
 						<div class="row">
 							<div class="col-sm-2">
 								<div class="form-group">
-									<label>User Name</label>
-									<input type="text" name="username" id="username" class="form-control" value="<?php echo isset($_REQUEST['username'])?$_REQUEST['username']:''?>" placeholder="Enter user name">
+									<label>First Name</label>
+									<input type="text" name="nom" id="nom" class="form-control" value="<?php echo isset($_REQUEST['nom'])?$_REQUEST['nom']:''?>" placeholder="Enter last name">
 								</div>
 							</div>
 							<div class="col-sm-2">
 								<div class="form-group">
-									<label>User Email</label>
-									<input type="email" name="useremail" id="useremail" class="form-control" value="<?php echo isset($_REQUEST['useremail'])?$_REQUEST['useremail']:''?>" placeholder="Enter user email">
+									<label>Last Name</label>
+									<input type="email" name="prenom" id="prenom" class="form-control" value="<?php echo isset($_REQUEST['prenom'])?$_REQUEST['prenom']:''?>" placeholder="Enter first name">
 								</div>
 							</div>
 							<div class="col-sm-2">
 								<div class="form-group">
-									<label>User Phone</label>
-									<input type="tel" name="userphone" id="userphone" class="form-control" value="<?php echo isset($_REQUEST['userphone'])?$_REQUEST['userphone']:''?>" placeholder="Enter user phone">
+									<label>Classe </label>
+									<input type="tel" name="classe" id="classe" class="form-control" value="<?php echo isset($_REQUEST['classe'])?$_REQUEST['classe']:''?>" placeholder="Enter class">
 								</div>
 							</div>
 							<div class="col-sm-4">
@@ -157,17 +156,17 @@ include_once('../ProjetDITI/model/');
 					</tr>
 				</thead>
 				<tbody>
-					<?php 
+					<!-- <?php 
 					if(count($userData)>0){
 						$s	=	'';
 						foreach($userData as $val){
 							$s++;
-					?>
+					?> -->
 					<tr>
 						<td><?php echo $s;?></td>
-						<td><?php echo $val['username'];?></td>
-						<td><?php echo $val['useremail'];?></td>
-						<td><?php echo $val['userphone'];?></td>
+						<td><?php echo $val['nom'];?></td>
+						<td><?php echo $val['prenom'];?></td>
+						<td><?php echo $val['classe'];?></td>
 						<td align="center"><?php echo date('Y-m-d',strtotime($val['dt']));?></td>
 						<td align="center">
 							<a href="edit-users.php?editId=<?php echo $val['id'];?>" class="text-primary"><i class="fa fa-fw fa-edit"></i> Edit</a> | 
